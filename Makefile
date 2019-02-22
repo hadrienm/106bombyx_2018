@@ -1,12 +1,12 @@
-NAME	= program
+NAME	= 106bombyx
 
-CC	= 
+CC	= gcc
 
 RM	= rm -f
 
-SRCS	= 
+SRCS	= 106bombyx.c
 
-OBJS	= $(SRCS:=.o)
+OBJS	= $(SRCS:.c=.o)
 
 CFLAGS = -I 
 CFLAGS += -Wall -Wextra
