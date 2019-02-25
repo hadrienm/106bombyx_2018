@@ -46,12 +46,13 @@ void launchi0i1(char **av)
 
 int main(int ac, char **av)
 {
+    if (ac == 1)return 84;
 	if (av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
 		printf("USAGE\n    ./106bombyx n [k | i0 i1]\n\nDESCRPITION\n     n     number of first generation individuals\n     k     growth rate from 1 to 4\n     io    initial generation (included)\n     i1    final generation (included)\n");
 		return (0);
 	}
 	if (ac != 3 && ac != 4)return 84;
-	for (int i = 1; av[i] != NULL; ++i)
+	for (int i = 1; i != ac; ++i)
 		for (int j = 0; av[i][j] != '\0'; ++j)
 			if (av[i][j] > 57 || av[i][j] < 42)return 84;
 	if (ac == 3)launchk(av);
