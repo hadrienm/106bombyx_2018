@@ -9,8 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void launchk(char **av)
+int launchk(char **av, int ac)
 {
+    for (int i = 1; i != ac; ++i) {
+        for (int j = 0; av[i][j] != '\0'; ++j)
+            if (av[i][j] > 57 || av[i][j] < 46)return 84;
+    }
 	double n = atof(av[1]);
 	double k = atof(av[2]);
 	double resultat = n;
@@ -21,8 +25,12 @@ void launchk(char **av)
 	}
 }
 
-void launchi0i1(char **av)
+int launchi0i1(char **av, int ac)
 {
+    for (int i = 1; i != ac; ++i) {
+        for (int j = 0; av[i][j] != '\0'; ++j)
+            if (av[i][j] > 57 || av[i][j] < 48)return 84;
+    }
 	double k = 1.00;
 	int n = atoi(av[1]);
 	int i0 = atoi(av[2]);
@@ -46,16 +54,16 @@ void launchi0i1(char **av)
 
 int main(int ac, char **av)
 {
+    int n = 0;
     if (ac == 1)return 84;
 	if (av[1][0] == '-' && av[1][1] == 'h' && av[1][2] == '\0') {
 		printf("USAGE\n    ./106bombyx n [k | i0 i1]\n\nDESCRPITION\n     n     number of first generation individuals\n     k     growth rate from 1 to 4\n     io    initial generation (included)\n     i1    final generation (included)\n");
 		return (0);
 	}
-	if (ac != 3 && ac != 4)return 84;
-	for (int i = 1; i != ac; ++i)
-		for (int j = 0; av[i][j] != '\0'; ++j)
-			if (av[i][j] > 57 || av[i][j] < 42)return 84;
-	if (ac == 3)launchk(av);
-	else launchi0i1(av);
+	if (ac == 3 || ac == 4);
+    else return 84;
+	if (ac == 3)n = launchk(av, ac);
+	else n = launchi0i1(av, ac);
+    if (n == 84)return 84;
 	return 0;
 }
