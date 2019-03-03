@@ -12,11 +12,16 @@
 int launchk(char **av, int ac)
 {
     for (int i = 1; i != ac; ++i) {
-        for (int j = 0; av[i][j] != '\0'; ++j)
-            if (av[i][j] > 57 || av[i][j] < 46)return 84;
+        for (int j = 0; av[i][j] != '\0'; ++j) {
+            if (i == 1)
+                if (av[i][j] > 57 || av[i][j] < 48)return 84;
+            if (i == 2)
+                if (av[i][j] > 57 || av[i][j] < 46)return 84;
+        }
     }
 	double n = atof(av[1]);
 	double k = atof(av[2]);
+    if (k < 1 || k > 4)return 84;
 	double resultat = n;
 	for (int i = 0; i != 100; ++i) {
 		printf("%d ", i + 1);
